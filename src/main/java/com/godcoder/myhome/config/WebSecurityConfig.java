@@ -37,12 +37,12 @@ public class WebSecurityConfig {
     @Autowired
     private DataSource dataSource;
 
-    @Autowired
+
     public void configureGlobal(AuthenticationManagerBuilder auth)
             throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-//                .passwordEncoder(passwordEncoder())
+                .passwordEncoder(passwordEncoder())
                 .usersByUsernameQuery("select username,password,enabled "
                         + "from user "
                         + "where username = ?")
