@@ -39,7 +39,7 @@ public class BoardController {
     }
 
     @GetMapping("/form")
-    public String form(Model model, @RequestParam(required = false) String id){
+    public String form(Model model, @RequestParam(required = false) Long id){
         if(id == null) {
             model.addAttribute("board", new Board());
         } else {

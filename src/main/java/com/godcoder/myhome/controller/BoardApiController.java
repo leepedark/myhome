@@ -36,7 +36,7 @@ public class BoardApiController {
     // Single item
 
     @GetMapping("/boards/{id}")
-    Board one(@PathVariable String id) {
+    Board one(@PathVariable Long id) {
 
         return repository.findById(id).orElse(null);
     }
@@ -44,7 +44,7 @@ public class BoardApiController {
     @PutMapping("/boards/{id}")
     Board replaceBoard(@RequestBody Board newBoard, @PathVariable Long id) {
 
-        return repository.findById(String.valueOf(id))
+        return repository.findById(id)
                 .map(board -> {
                     board.setTitle(newBoard.getTitle());
                     board.setContent(newBoard.getContent());
@@ -57,7 +57,7 @@ public class BoardApiController {
     }
 
     @DeleteMapping("/boards/{id}")
-    void deleteBoard(@PathVariable String id) {
+    void deleteBoard(@PathVariable Long id) {
         repository.deleteById(id);
     }
 }
